@@ -17,17 +17,13 @@ public class BaseTest {
         options.addArguments("start-maximized");
         options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
-
-
-
     }
 
     @After
 
     public void tearDown() throws InterruptedException {
         Thread.sleep(7000);
-        // driver.quit();
-
+        driver.quit();
     }
 
 }

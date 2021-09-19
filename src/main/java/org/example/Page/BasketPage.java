@@ -4,40 +4,46 @@ import org.example.Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class BasketPage extends BasePage {
-    private By priceText = By.xpath("//div[@class='total-price']");
-    private By productSelect = By.xpath("//select[@class='amount']");
-    private By quantity = By.xpath("//div[@class='gg-input gg-input-select']");
-    private By count= By.xpath("//div[@class='gg-d-16 gg-m-14 detail-text']");
-    private By deletedButton=By.xpath("//div[@class='row']/a[@title='Sil']");
-    private By noProductText=By.xpath("//h2[contains(text(),'Sepetinizde ürün bulunmamaktadır.')]");;
+import java.util.logging.Logger;
 
-    public BasketPage(WebDriver driver) {
-        super(driver);
+public class BasketPage extends BasePage {
+    private final By priceText = By.xpath("//div[@class='total-price']");
+    private final By productSelect = By.xpath("//select[@class='amount']");
+    private final By quantity = By.xpath("//div[@class='gg-input gg-input-select']");
+    private final By count = By.xpath("//div[@class='gg-d-16 gg-m-14 detail-text']");
+    private final By deletedButton = By.xpath("//div[@class='row']/a[@title='Sil']");
+    private final By noProductText = By.xpath("//h2[contains(text(),'Sepetinizde ürün bulunmamaktadır.')]");
+
+    public BasketPage(WebDriver driver, Logger logger) {
+        super(driver, logger);
     }
 
-
     public String getTextPrice() {
-        return findElement(priceText).getText();
+        String priceInCart = findElement(priceText).getText();
+        logger.info("Sepet Sayfasındaki Fiyat");
+        return priceInCart;
     }
 
     public void increaseProduct() {
-        selectDrobdown(productSelect,"2");
-     }
-     public  String getCountText(){
-         String countText= findElement(count).getText();
-         return countText.replaceAll("[^0-9]", "");
-
-     }
-
-     public void deletedButton(){
-        clickElement(deletedButton);
-     }
-
-    public  String getNoProductText(){
-         return findElement(noProductText).getText();
+        selectDrobdown(productSelect, "2");
+        logger.info("Ürün miktarı 2 yapılır");
 
     }
 
+    public String getCountText() {
+        String countText = findElement(count).getText();
+        logger.info(countText + "miktarın 2 olduğu doğrulanır");
+        return countText.replaceAll("[^0-9]", "");
 
+    }
+
+    public void deletedButton() {
+        clickElement(deletedButton);
+        logger.info("Sepetteki Ürünler Silinir");
+    }
+
+    public String getNoProductText() {
+        logger.info("sepetin boş olduğu kontrol edilir");
+        return findElement(noProductText).getText();
+    }
 }
