@@ -1,0 +1,214 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 188016 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=6812, tid=0x0000000000004480
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_281-b09) (build 1.8.0_281-b09)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.281-b09 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001c1153b6800):  JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=17536, stack(0x0000001d10300000,0x0000001d10400000)]
+
+Stack: [0x0000001d10300000,0x0000001d10400000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x32e5b9]
+
+
+Current CompileTask:
+C2:    649  269  s!   4       sun.misc.URLClassPath::getLoader (243 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000001c117224800 JavaThread "Service Thread" daemon [_thread_blocked, id=19504, stack(0x0000001d10600000,0x0000001d10700000)]
+  0x000001c1153be000 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=21276, stack(0x0000001d10500000,0x0000001d10600000)]
+  0x000001c1153bd000 JavaThread "C2 CompilerThread2" daemon [_thread_in_native, id=20372, stack(0x0000001d10400000,0x0000001d10500000)]
+=>0x000001c1153b6800 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=17536, stack(0x0000001d10300000,0x0000001d10400000)]
+  0x000001c1153b4000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=11508, stack(0x0000001d10200000,0x0000001d10300000)]
+  0x000001c1153b0000 JavaThread "Monitor Ctrl-Break" daemon [_thread_in_native, id=3352, stack(0x0000001d10100000,0x0000001d10200000)]
+  0x000001c115342000 JavaThread "Attach Listener" daemon [_thread_blocked, id=20680, stack(0x0000001d10000000,0x0000001d10100000)]
+  0x000001c115341000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=18120, stack(0x0000001d0ff00000,0x0000001d10000000)]
+  0x000001c11531b000 JavaThread "Finalizer" daemon [_thread_blocked, id=4956, stack(0x0000001d0fe00000,0x0000001d0ff00000)]
+  0x000001c115313800 JavaThread "Reference Handler" daemon [_thread_blocked, id=15884, stack(0x0000001d0fd00000,0x0000001d0fe00000)]
+  0x000001c17f1cd800 JavaThread "main" [_thread_blocked, id=10576, stack(0x0000001d0f300000,0x0000001d0f400000)]
+
+Other Threads:
+  0x000001c1152e9800 VMThread [stack: 0x0000001d0fc00000,0x0000001d0fd00000] [id=15472]
+  0x000001c11722d800 WatcherThread [stack: 0x0000001d10700000,0x0000001d10800000] [id=18236]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000001c17f1c9250] Threads_lock - owner thread: 0x000001c1152e9800
+[0x000001c17f1ca260] Heap_lock - owner thread: 0x000001c17f1cd800
+
+heap address: 0x0000000083c00000, size: 1988 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 37888K, used 1296K [0x00000000d6980000, 0x00000000d9380000, 0x0000000100000000)
+  eden space 32768K, 0% used [0x00000000d6980000,0x00000000d6980000,0x00000000d8980000)
+  from space 5120K, 25% used [0x00000000d8980000,0x00000000d8ac4010,0x00000000d8e80000)
+  to   space 5120K, 0% used [0x00000000d8e80000,0x00000000d8e80000,0x00000000d9380000)
+ ParOldGen       total 86016K, used 8K [0x0000000083c00000, 0x0000000089000000, 0x00000000d6980000)
+  object space 86016K, 0% used [0x0000000083c00000,0x0000000083c02000,0x0000000089000000)
+ Metaspace       used 5102K, capacity 5200K, committed 5248K, reserved 1060864K
+  class space    used 593K, capacity 627K, committed 640K, reserved 1048576K
+
+Card table byte_map: [0x000001c17fc10000,0x000001c180000000] byte_map_base: 0x000001c17f7f2000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000060206ff0
+ Begin Bits: [0x000001c1106b0000, 0x000001c1125c0000)
+ End Bits:   [0x000001c1125c0000, 0x000001c1144d0000)
+
+Polling page: 0x000001c17f3c0000
+
+CodeCache: size=245760Kb used=1898Kb max_used=1898Kb free=243861Kb
+ bounds [0x000001c101410000, 0x000001c101680000, 0x000001c110410000]
+ total_blobs=560 nmethods=281 adapters=192
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.638 Thread 0x000001c1153be000  279       3       java.nio.HeapByteBuffer::ix (7 bytes)
+Event: 0.639 Thread 0x000001c1153be000 nmethod 279 0x000001c1015e7210 code [0x000001c1015e7360, 0x000001c1015e74b8]
+Event: 0.639 Thread 0x000001c1153be000  281       1       java.lang.reflect.Method::getModifiers (5 bytes)
+Event: 0.639 Thread 0x000001c1153be000 nmethod 281 0x000001c1015e6b50 code [0x000001c1015e6ca0, 0x000001c1015e6db8]
+Event: 0.639 Thread 0x000001c1153be000  282       3       java.util.AbstractList::<init> (10 bytes)
+Event: 0.639 Thread 0x000001c1153be000 nmethod 282 0x000001c1015e66d0 code [0x000001c1015e6840, 0x000001c1015e6a58]
+Event: 0.640 Thread 0x000001c1153be000  283       3       java.util.HashMap::resize (359 bytes)
+Event: 0.640 Thread 0x000001c1153b4000  285  s    4       java.io.ByteArrayOutputStream::write (32 bytes)
+Event: 0.641 Thread 0x000001c1153be000 nmethod 283 0x000001c1015e9810 code [0x000001c1015e9a60, 0x000001c1015eac90]
+Event: 0.641 Thread 0x000001c1153be000  284       3       java.io.DataOutputStream::writeUTF (435 bytes)
+
+GC Heap History (1 events):
+Event: 0.643 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 37888K, used 8547K [0x00000000d6980000, 0x00000000d9380000, 0x0000000100000000)
+  eden space 32768K, 26% used [0x00000000d6980000,0x00000000d71d8dd8,0x00000000d8980000)
+  from space 5120K, 0% used [0x00000000d8e80000,0x00000000d8e80000,0x00000000d9380000)
+  to   space 5120K, 0% used [0x00000000d8980000,0x00000000d8980000,0x00000000d8e80000)
+ ParOldGen       total 86016K, used 0K [0x0000000083c00000, 0x0000000089000000, 0x00000000d6980000)
+  object space 86016K, 0% used [0x0000000083c00000,0x0000000083c00000,0x0000000089000000)
+ Metaspace       used 5102K, capacity 5200K, committed 5248K, reserved 1060864K
+  class space    used 593K, capacity 627K, committed 640K, reserved 1048576K
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (7 events):
+Event: 0.065 Thread 0x000001c17f1cd800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000d6987cc0) thrown at [C:\jenkins\workspace\8-2-build-windows-amd64-cygwin\jdk8u281\880\hots
+Event: 0.065 Thread 0x000001c17f1cd800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000d6987fa8) thrown at [C:\jenkins\workspace\8-2-build-windows-amd64-cygwin\jdk8u281\880\hotspot\src\share\vm\p
+Event: 0.333 Thread 0x000001c17f1cd800 Exception <a 'java/io/FileNotFoundException'> (0x00000000d6c67798) thrown at [C:\jenkins\workspace\8-2-build-windows-amd64-cygwin\jdk8u281\880\hotspot\src\share\vm\prims\jni.cpp, line 710]
+Event: 0.405 Thread 0x000001c17f1cd800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d6d0a5c0) thrown at [C:\jenkins\workspace\8-2-build-windows-amd64-cygwin\jdk8u281\880\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.405 Thread 0x000001c17f1cd800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d6d0a9b8) thrown at [C:\jenkins\workspace\8-2-build-windows-amd64-cygwin\jdk8u281\880\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.407 Thread 0x000001c17f1cd800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d6d0ec98) thrown at [C:\jenkins\workspace\8-2-build-windows-amd64-cygwin\jdk8u281\880\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+Event: 0.407 Thread 0x000001c17f1cd800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000d6d0f090) thrown at [C:\jenkins\workspace\8-2-build-windows-amd64-cygwin\jdk8u281\880\hotspot\src\share\vm\prims\jvm.cpp, line 1512]
+
+Events (10 events):
+Event: 0.636 loading class java/io/ObjectInputStream done
+Event: 0.636 loading class java/io/ObjectStreamClass$FieldReflectorKey
+Event: 0.636 loading class java/io/ObjectStreamClass$FieldReflectorKey done
+Event: 0.637 loading class java/io/ObjectStreamClass$FieldReflector
+Event: 0.637 loading class java/io/ObjectStreamClass$FieldReflector done
+Event: 0.641 loading class org/junit/runner/notification/RunNotifier$1
+Event: 0.641 loading class org/junit/runner/notification/RunNotifier$1 done
+Event: 0.642 loading class org/junit/runner/notification/RunNotifier$SafeNotifier
+Event: 0.642 loading class org/junit/runner/notification/RunNotifier$SafeNotifier done
+Event: 0.643 Executing VM operation: CollectForMetadataAllocation
+
+
+Dynamic libraries:
+0x00007ff62cf20000 - 0x00007ff62cf67000 	C:\Program Files\Java\jdk1.8.0_281\bin\java.exe
+0x00007ffcac6d0000 - 0x00007ffcac8c5000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffcaa750000 - 0x00007ffcaa80e000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffca9f50000 - 0x00007ffcaa219000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffcabcf0000 - 0x00007ffcabd9c000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffcab5e0000 - 0x00007ffcab67e000 	C:\Windows\System32\msvcrt.dll
+0x00007ffcabbf0000 - 0x00007ffcabc8b000 	C:\Windows\System32\sechost.dll
+0x00007ffcab8b0000 - 0x00007ffcab9da000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffcab430000 - 0x00007ffcab5d1000 	C:\Windows\System32\USER32.dll
+0x00007ffca9e80000 - 0x00007ffca9ea2000 	C:\Windows\System32\win32u.dll
+0x00007ffcaa720000 - 0x00007ffcaa74b000 	C:\Windows\System32\GDI32.dll
+0x00007ffcaa220000 - 0x00007ffcaa32b000 	C:\Windows\System32\gdi32full.dll
+0x00007ffca9eb0000 - 0x00007ffca9f4d000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffcaa5f0000 - 0x00007ffcaa6f0000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffc8ea10000 - 0x00007ffc8ecaa000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e\COMCTL32.dll
+0x00007ffcaa810000 - 0x00007ffcaa840000 	C:\Windows\System32\IMM32.DLL
+0x00007ffc8b600000 - 0x00007ffc8b615000 	C:\Program Files\Java\jdk1.8.0_281\jre\bin\vcruntime140.dll
+0x00007ffc8b560000 - 0x00007ffc8b5fb000 	C:\Program Files\Java\jdk1.8.0_281\jre\bin\msvcp140.dll
+0x000000005fa20000 - 0x000000006027f000 	C:\Program Files\Java\jdk1.8.0_281\jre\bin\server\jvm.dll
+0x00007ffcaab10000 - 0x00007ffcaab18000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffc9e830000 - 0x00007ffc9e83a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffc90760000 - 0x00007ffc90787000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffc914d0000 - 0x00007ffc914d9000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffcab680000 - 0x00007ffcab6eb000 	C:\Windows\System32\WS2_32.dll
+0x00007ffca8670000 - 0x00007ffca8682000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffc8b340000 - 0x00007ffc8b350000 	C:\Program Files\Java\jdk1.8.0_281\jre\bin\verify.dll
+0x00007ffc8b310000 - 0x00007ffc8b33b000 	C:\Program Files\Java\jdk1.8.0_281\jre\bin\java.dll
+0x00007ffc9f1f0000 - 0x00007ffc9f220000 	C:\Program Files\Java\jdk1.8.0_281\jre\bin\instrument.dll
+0x00007ffc8b2f0000 - 0x00007ffc8b308000 	C:\Program Files\Java\jdk1.8.0_281\jre\bin\zip.dll
+0x00007ffcabf50000 - 0x00007ffcac68f000 	C:\Windows\System32\SHELL32.dll
+0x00007ffca7ed0000 - 0x00007ffca8660000 	C:\Windows\SYSTEM32\windows.storage.dll
+0x00007ffcaabd0000 - 0x00007ffcaaf25000 	C:\Windows\System32\combase.dll
+0x00007ffca9840000 - 0x00007ffca986c000 	C:\Windows\SYSTEM32\Wldp.dll
+0x00007ffcaab20000 - 0x00007ffcaabce000 	C:\Windows\System32\SHCORE.dll
+0x00007ffcab6f0000 - 0x00007ffcab745000 	C:\Windows\System32\shlwapi.dll
+0x00007ffca9d30000 - 0x00007ffca9d4f000 	C:\Windows\SYSTEM32\profapi.dll
+0x00007ffc9f270000 - 0x00007ffc9f28a000 	C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\bin\breakgen64.dll
+0x00007ffc89e00000 - 0x00007ffc89e1c000 	C:\Program Files\Java\jdk1.8.0_281\jre\bin\net.dll
+0x00007ffca95a0000 - 0x00007ffca960a000 	C:\Windows\system32\mswsock.dll
+
+VM Arguments:
+jvm_args: -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\lib\idea_rt.jar=61753:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\bin -Dfile.encoding=UTF-8 
+java_command: com.intellij.rt.junit.JUnitStarter -ideVersion5 -junit4 org.example.Test.GittigidyorTest,randomPurching
+java_class_path (initial): C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\lib\idea_rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\plugins\junit\lib\junit5-rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.3\plugins\junit\lib\junit-rt.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_281\jre\lib\rt.jar;C:\Users\Dell\Desktop\gittiGidiyorProject\gittiGidiyorProje\target\test-classes;C:\Users\Dell\Desktop\gittiGidiyorProject\gittiGidiyorProje\target\classes;C:\Users\Dell\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Dell\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Dell\.m2\repository\org\seleniumhq\selenium\selenium-ja
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_281
+PATH=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_281;C:\Program Files\Maven\apache-maven-3.8.1\bin;C:\Program Files\Java\jdk1.8.0_281\bin;C:\Program Files\Gauge\bin;C:\Program Files\Git\cmd;C:\Users\Dell\AppData\Local\Microsoft\WindowsApps;C:\Users\Dell\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_281;C:\Users\Dell\AppData\Local\Android\Sdk\platform-tools;C:\Users\Dell\AppData\Local\Android\Sdk\tools;C:\Users\Dell\AppData\Local\Android\Sdk\tools\bin;C:\Program Files\Gauge\bin;
+USERNAME=Dell
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 12, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10.0 , 64 bit Build 19041 (10.0.19041.1202)
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 142 stepping 12, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8139464k(262496k free), swap 33305288k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.281-b09) for windows-amd64 JRE (1.8.0_281-b09), built on Dec  9 2020 13:54:07 by "" with MS VC++ 15.9 (VS2017)
+
+time: Fri Sep 17 21:01:29 2021
+timezone: Türkiye Standart Saati
+elapsed time: 0.654050 seconds (0d 0h 0m 0s)
+
